@@ -4,7 +4,7 @@
   import data from '../data/data.json'
 
   let selectedRegion = '';
-  let regions = ['Africa', 'America', 'Asia', 'Europe', 'Oceania'];
+  let regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 
   /**
  * @param {string} selectedRegion
@@ -15,7 +15,20 @@
     } else {
       return data.filter((item) => item.region === selectedRegion)
     }
+  }
+
+  let search = '';
+
+    /**
+ * @param {string} search
+ */
+  const filteredCountriesByName = (search) => {
+    if (search === '') {
+      return data;
+    } else {
+      return data.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()))
     }
+  }
   
 
 </script>
@@ -28,7 +41,8 @@
 
 <section class="mx-14">
   <div class="filter justify-between my-10 md:flex gap-10">
-    <input class="flex-2 min-w-96 px-8 h-12 bg-dark-mode-elements rounded-sm" type="text" placeholder="Search for a country..." />
+    <input class="input input-bordered flex-2 min-w-96 px-8 h-12 bg-dark-mode-elements rounded-sm" type="text" bind:value={search} placeholder="Search for a country..." />
+
     <select bind:value={selectedRegion} class="dropdown select mt-8 md:mt-0 select-bordered w-72 max-w-xs bg-dark-mode-elements rounded-sm" >
       <option value="" disabled selected>Filter by Region</option>
       {#each regions as region}
@@ -37,12 +51,10 @@
       
     </select>
 
-    <p>Selected region: {selectedRegion}</p>
-
   </div>
     <section class="md:flex flex-wrap gap-20">
 
-      {#each data as item (item.name)}
+      {#each filteredCountries(selectedRegion) as item (item.name)}
     <div class="card w-72 bg-base-100 shadow-xl rounded-md">
       <figure><img class="h-44" src="{item.flag}" alt="flag"></figure>
       <div class="card-body">
@@ -53,7 +65,6 @@
       </div>
     </div>
     {/each}
-
 
 
   
