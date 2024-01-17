@@ -1,4 +1,4 @@
-<!-- <script>
+<script>
   import { onMount } from "svelte";
   import { page } from "$app/stores";
 
@@ -16,4 +16,4 @@
 </script>
 
 <h1>{country.name}</h1>
-<h1>{country.symbol}</h1> -->
+<h1>{country.symbol}</h1>

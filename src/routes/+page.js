@@ -1,8 +1,9 @@
-// /** @type {import('./$types').PageLoad} */ export function load({ params }) {
+// /** @type {import('./$types').PageLoad} */ export async function load({ fetch }) {
+// 	const response = await fetch('/data.json');
+// 	const data = await response.json();
 // 	return {
-// 		post: {
-// 			title: `Title for ${params.slug} goes here`,
-// 			content: `Content for ${params.slug} goes here`
+// 		props: {
+// 			data
 // 		}
 // 	};
 // }

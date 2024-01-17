@@ -1,18 +1,6 @@
 <script>
-  import { onMount } from "svelte";
-    /** @type {import('./$types').PageData} */
 
-  // let data = [];
-
-  // onMount(async () => {
-  //   const response = await fetch('$lib/data.json')
-  //   if (response.ok) {
-  //    data = await response.json()
-  //   } else {
-  //     console.log('Fetch error', response.statusText)
-  //   }
-  //   })
-
+  import data from '../data/data.json'
 
 </script>
 
@@ -37,72 +25,22 @@
   </div>
     <section class="md:flex flex-wrap gap-20">
 
+      {#each data as item (item.name)}
     <div class="card w-72 bg-base-100 shadow-xl rounded-md">
       <figure><img src="https://flagcdn.com/bs.svg" alt="flag"></figure>
       <div class="card-body">
-        <h2 class="card-title">Bahamia</h2>
-        <h1>{data.post.title}</h1>
-        <div>{@html data.post.content}</div>
-        <p><strong>Population:</strong> 27657145</p>
-        <p><strong>Region:</strong> Asia</p>
-        <p><strong>Capital:</strong> Kabul</p>
+        <h2 class="card-title">{item.name}</h2>
+        <p><strong>Population:</strong> {item.population}</p>
+        <p><strong>Region:</strong> {item.region}</p>
+        <p><strong>Capital:</strong> {item.capital}</p>
       </div>
     </div>
-
-    <div class="card w-72 bg-base-100 shadow-xl rounded-md">
-      <figure><img src="https://flagcdn.com/bs.svg" alt="flag"></figure>
-      <div class="card-body">
-        <h2 class="card-title">Bahamia</h2>
-        <p><strong>Population:</strong> 27657145</p>
-        <p><strong>Region:</strong> Asia</p>
-        <p><strong>Capital:</strong> Kabul</p>
-      </div>
-    </div>
-
-    <div class="card w-72 bg-base-100 shadow-xl rounded-md">
-      <figure><img src="https://flagcdn.com/bs.svg" alt="flag"></figure>
-      <div class="card-body">
-        <h2 class="card-title">Bahamia</h2>
-        <p><strong>Population:</strong> 27657145</p>
-        <p><strong>Region:</strong> Asia</p>
-        <p><strong>Capital:</strong> Kabul</p>
-      </div>
-    </div>
-
-    <div class="card w-72 bg-base-100 shadow-xl rounded-md">
-      <figure><img src="https://flagcdn.com/bs.svg" alt="flag"></figure>
-      <div class="card-body">
-        <h2 class="card-title">Bahamia</h2>
-        <p><strong>Population:</strong> 27657145</p>
-        <p><strong>Region:</strong> Asia</p>
-        <p><strong>Capital:</strong> Kabul</p>
-      </div>
-    </div>
-
-    <div class="card w-72 bg-base-100 shadow-xl rounded-md">
-      <figure><img src="https://flagcdn.com/bs.svg" alt="flag"></figure>
-      <div class="card-body">
-        <h2 class="card-title">Bahamia</h2>
-        <p><strong>Population:</strong> 27657145</p>
-        <p><strong>Region:</strong> Asia</p>
-        <p><strong>Capital:</strong> Kabul</p>
-      </div>
-    </div>
-
-    <div class="card w-72 bg-base-100 shadow-xl rounded-md">
-      <figure><img src="https://flagcdn.com/bs.svg" alt="flag"></figure>
-      <div class="card-body">
-        <h2 class="card-title">Bahamia</h2>
-        <p><strong>Population:</strong> 27657145</p>
-        <p><strong>Region:</strong> Asia</p>
-        <p><strong>Capital:</strong> Kabul</p>
-      </div>
-    </div>
-
-    
+    {/each}
 
 
 
+  
+  
   </section>
 </section>
 
