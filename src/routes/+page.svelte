@@ -5,11 +5,13 @@
 
   let selectedRegion = '';
   let regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+  let search = '';
 
   /**
  * @param {string} selectedRegion
  */
   const filteredCountries = (selectedRegion) => {
+    if (!data) return [];
     if (selectedRegion === '') {
       return data;
     } else {
@@ -17,12 +19,12 @@
     }
   }
 
-  let search = '';
 
     /**
  * @param {string} search
  */
   const filteredCountriesByName = (search) => {
+    if (!data) return [];
     if (search === '') {
       return data;
     } else {
@@ -54,9 +56,9 @@
   </div>
     <section class="md:flex flex-wrap gap-20">
 
-      {#each filteredCountries(selectedRegion) as item (item.name)}
+      {#each filteredCountriesByName(search) as item (item.name)}
     <div class="card w-72 bg-base-100 shadow-xl rounded-md">
-      <figure><img class="h-44" src="{item.flag}" alt="flag"></figure>
+      <figure><img class="h-44" src="{item.flags.png}" alt="flag"></figure>
       <div class="card-body">
         <h2 class="card-title">{item.name}</h2>
         <p><strong>Population:</strong> {item.population.toLocaleString("en-US")}</p>
