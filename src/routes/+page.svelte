@@ -1,38 +1,25 @@
 <script>
-
-
   import data from '../data/data.json'
 
   let selectedRegion = '';
-  let regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+  let regions = ['None', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
   let search = '';
 
-  /**
- * @param {string} selectedRegion
- */
-  const filteredCountries = (selectedRegion) => {
+  const filteredCountries = (selectedRegion, search) => {
     if (!data) return [];
-    if (selectedRegion === '') {
-      return data;
-    } else {
-      return data.filter((item) => item.region === selectedRegion)
+
+    let result = data;
+
+    if (selectedRegion !== 'None' && selectedRegion !== '') {
+     result = result.filter((item) => item.region === selectedRegion)
     }
+      if (search !== '') {
+        result = result.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()))
+      }
+      return result
   }
 
-
-    /**
- * @param {string} search
- */
-  const filteredCountriesByName = (search) => {
-    if (!data) return [];
-    if (search === '') {
-      return data;
-    } else {
-      return data.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()))
-    }
-  }
   
-
 </script>
 
 <main>
@@ -56,7 +43,7 @@
   </div>
     <section class="md:flex flex-wrap gap-20">
 
-      {#each filteredCountriesByName(search) as item (item.name)}
+      {#each filteredCountries(selectedRegion, search) as item (item.name)}
     <div class="card w-72 bg-base-100 shadow-xl rounded-md">
       <figure><img class="h-44" src="{item.flags.png}" alt="flag"></figure>
       <div class="card-body">
@@ -67,11 +54,6 @@
       </div>
     </div>
     {/each}
-
-
-  
-  
   </section>
 </section>
-
 </main>
