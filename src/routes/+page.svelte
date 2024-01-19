@@ -19,6 +19,13 @@
       return result
   }
 
+  let myModal;
+
+  function openModal() {
+    if (myModal) {
+      myModal.showModal();
+    }
+  }
   
 </script>
 
@@ -51,6 +58,21 @@
         <p><strong>Population:</strong> {item.population.toLocaleString("en-US")}</p>
         <p><strong>Region:</strong> {item.region}</p>
         <p><strong>Capital:</strong> {item.capital}</p>
+
+        <button on:click={openModal}>open modal</button>
+        <dialog bind:this={myModal} class="modal">
+          <div class="modal-box">
+            <form method="dialog">
+              <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            <h3 class="font-bold text-lg">Hello!</h3>
+            <p class="py-4">Press ESC key or click outside to close</p>
+          </div>
+          <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+          </form>
+        </dialog>
+
       </div>
   </div>
 {/each}
