@@ -20,8 +20,10 @@
   }
 
   let myModal;
+  let selectedCountry = null;
 
-  function openModal() {
+  function openModal(country) {
+    selectedCountry = country;
     if (myModal) {
       myModal.showModal();
     }
@@ -59,14 +61,23 @@
         <p><strong>Region:</strong> {item.region}</p>
         <p><strong>Capital:</strong> {item.capital}</p>
 
-        <dialog bind:this={myModal} class="modal">
-          <div class="modal-box">
+        <dialog bind:this={myModal} class="modal w-full">
+          {#if selectedCountry}
+          <div class="modal-box h-full max-w-full">
             <form method="dialog">
               <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
             </form>
             <h3 class="font-bold text-lg">Hello!</h3>
             <p class="py-4">Press ESC key or click outside to close</p>
+            <h2 class="card-title">{selectedCountry.name}</h2>
+            <p><strong>Population:</strong> {selectedCountry.population.toLocaleString("en-US")}</p>
+            
+        <p><strong>Region:</strong> {selectedCountry.region}</p>
+        <p><strong>Capital:</strong> {selectedCountry.capital}</p>
+            <img class=" rounded-t-md object-cover aspect-[320/213]" src="{selectedCountry.flags.png}" alt="flag">
+
           </div>
+          {/if}
           <form method="dialog" class="modal-backdrop">
             <button>close</button>
           </form>
