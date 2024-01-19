@@ -44,16 +44,16 @@
     <section class="md:flex flex-wrap gap-20">
 
       {#each filteredCountries(selectedRegion, search) as item (item.name)}
-    <div class="card w-72 bg-base-100 shadow-xl rounded-md">
-      <figure><img class="h-44" src="{item.flags.png}" alt="flag"></figure>
-      <div class="card-body">
+  <div class="card w-72 flex h-96 flex-col bg-dark-mode-elements shadow-xl rounded-md">
+      <img  width={320} height={213} class="h-full w-full rounded-t-md object-cover aspect-[320/213]" src="{item.flags.png}" alt="flag">
+      <div class="card-body h-1/2">
         <h2 class="card-title">{item.name}</h2>
         <p><strong>Population:</strong> {item.population.toLocaleString("en-US")}</p>
         <p><strong>Region:</strong> {item.region}</p>
         <p><strong>Capital:</strong> {item.capital}</p>
       </div>
-    </div>
-    {/each}
+  </div>
+{/each}
   </section>
 </section>
 </main>

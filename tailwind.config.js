@@ -5,7 +5,7 @@ export default {
 		extend: {
 			colors: {
 				'dark-mode-background': 'hsl(207, 26%, 17%)',
-				'dark-mode-elements': 'hsl(209, 23%, 22%)',
+				'dark-mode-elements': 'hsl(209, 23%, 19%)',
 				'dark-mode-text': 'hsl(0, 0%, 100%)'
 			}
 		}
