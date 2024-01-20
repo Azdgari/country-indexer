@@ -12,6 +12,19 @@ export default {
 	},
 	plugins: [require('daisyui')],
 	daisyui: {
-		themes: ['dark', 'light', 'cupcake', 'bumblebee', 'emerald']
+		themes: [
+			'dark',
+			'light',
+			'cupcake',
+			{
+				garden: {
+					...require('daisyui/src/theming/themes')['garden'],
+					'.card': {
+						bgcolor: 'yellow)'
+					}
+				}
+			},
+			'emerald'
+		]
 	}
 };
