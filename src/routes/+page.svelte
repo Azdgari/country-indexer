@@ -45,7 +45,7 @@
 <main>
 	<header class="flex justify-between px-14 py-5 bg-dark-mode-elements">
 		<button on:click={() => resetFilters()} class="font-bold text-dark-mode-text"
-			>Where in the world?</button
+			>Country Indexer</button
 		>
 		<ThemeSwap />
 	</header>
